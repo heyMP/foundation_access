@@ -13,13 +13,6 @@
 //}
 
 /**
- * Implements template_preprocess_page
- *
- */
-//function foundation_access_preprocess_page(&$variables) {
-//}
-
-/**
  * Implements template_preprocess_node
  *
  */
@@ -132,6 +125,7 @@
 //}
 
 function foundation_access_preprocess_page(&$variables) {
+  drupal_add_css('//fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic|Vollkorn:400italic,400', array('group' => CSS_THEME));
   // Convenience variables
   if (!empty($variables['page']['sidebar_first'])){
     $left = $variables['page']['sidebar_first'];
@@ -415,7 +409,7 @@ function foundation_access_menu_local_tasks(&$variables) {
 
   if (!empty($variables['primary'])) {
     $variables['primary']['#prefix'] = '<h2 class="element-invisible">' . t('Primary tabs') . '</h2>';
-    $variables['primary']['#prefix'] .= '<ul class="local-task-tabs-1 button-group round">';
+    $variables['primary']['#prefix'] .= '<ul class="local-task-tabs-1 button-group">';
     $variables['primary']['#suffix'] = '</ul>';
     $output .= drupal_render($variables['primary']);
   }
