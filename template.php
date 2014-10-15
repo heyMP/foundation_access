@@ -126,6 +126,17 @@
 
 function foundation_access_preprocess_page(&$variables) {
   drupal_add_css('//fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic|Vollkorn:400italic,400', array('group' => CSS_THEME));
+  $theme_vars = variable_get('theme_foundation_access_settings', array());
+  // see if we should display the logo based on toggle
+  if (isset($theme_vars['toggle_logo']) && $theme_vars['toggle_logo']) {
+    $variables['logo_state'] = TRUE;
+  }
+  else {
+    $variables['logo_state'] = FALSE;
+  }
+  if (!isset($variables['zurb_color'])) {
+    $variables['zurb_color'] = '#ccc';
+  }
   // Convenience variables
   if (!empty($variables['page']['sidebar_first'])){
     $left = $variables['page']['sidebar_first'];
