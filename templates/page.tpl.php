@@ -147,14 +147,14 @@
           <?php if (!empty($page['cis_user_profile'])): ?>
           <!--.l-header-cis_user_profile -->
             <div class="left cis-user-profile">
-              <?php print render($page['cis_user_profile']); ?>
+              <?php print str_replace('user-profile-dropdown', 'user-profile-dropdown-sticky', render($page['cis_user_profile'])); ?>
             </div>
           <!--/.l-header-cis_user_profile -->
           <?php endif; ?>
           <?php if (!empty($page['cis_lmsless'])): ?>
             <!--.l-header-cis_lmsless -->
               <div class="cis-lmsless right">
-                <?php print render($page['cis_lmsless']); ?>
+                <?php print str_replace('lmsless-button', 'lmsless-button-sticky', render($page['cis_lmsless'])); ?>
               </div>
             <!--/.l-header-cis_lmsless -->
           <?php endif; ?>
