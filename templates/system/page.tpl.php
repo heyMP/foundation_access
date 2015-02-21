@@ -642,10 +642,36 @@
             <div class="content-element-region small-12 medium-12 large-12 columns">
               <div class="row">
                 <div class="small-12 medium-12 large-push-1 large-10 columns" role="content">
-                  <?php if ($title): ?>
-                    <h1><?php print $title; ?><br><small>This is my course. It's awesome.</small></h1>
+                  <?php if (!empty($page['highlighted'])): ?>
+                    <div class="highlight panel callout">
+                      <?php print render($page['highlighted']); ?>
+                    </div>
                   <?php endif; ?>
-                  <hr>
+
+                  <a id="main-content"></a>
+
+                  <?php if ($breadcrumb): print $breadcrumb; endif; ?>
+
+                  <?php if ($title && !$is_front): ?>
+                    <?php print render($title_prefix); ?>
+                      <h1 id="page-title" class="title"><?php print $title; ?>
+                        <br><small>This is my course. It's awesome.</small>
+                      </h1>
+                      <hr>
+                    <?php print render($title_suffix); ?>
+                  <?php endif; ?>
+
+                  <?php if (!empty($tabs)): ?>
+                    <?php print render($tabs); ?>
+                    <?php if (!empty($tabs2)): print render($tabs2); endif; ?>
+                  <?php endif; ?>
+
+                  <?php if ($action_links): ?>
+                    <ul class="action-links">
+                      <?php print render($action_links); ?>
+                    </ul>
+                  <?php endif; ?>
+
                   <?php print render($page['content']); ?>
                 </div>
               </div>
