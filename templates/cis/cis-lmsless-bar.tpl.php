@@ -47,13 +47,15 @@
             <h1>Course</h1>
               <hr></hr>
               <h2>Services</h1>
-                <!-- <li class="cis-lmsless-item cis-lmsless-site-name"><?php print $site_name; ?></li> -->
-  <!-- <li class="cis-lmsless-item cis-lmsless-active-section"> <?php print $section; ?></li> -->
+              <a href="#" class=" etb-modal-icon content-outline-icon row">
+                <div class="icon-content-outline-black etb-modal-icons"></div>
+                <span>Content Outline</span>
+              </a>
               <?php foreach ($services as $service) : ?>
-                <a href="<?php print $service['url']; ?>" class=" etb-modal-icon calendar-icon row">
-                  <div class="icon-calendar-black etb-modal-icons"></div>
-                  <span><?php print $service['title']; ?></span>
-                </a>
+              <a href="<?php print $service['url']; ?>" class=" etb-modal-icon calendar-icon row">
+                <div class="icon-calendar-black etb-modal-icons"></div>
+                <span><?php print $service['title']; ?></span>
+              </a>
               <?php endforeach ?>
               <a href="#" class=" etb-modal-icon calendar-icon row">
                 <div class="icon-calendar-black etb-modal-icons"></div>
@@ -62,10 +64,6 @@
               <a href="#" class=" etb-modal-icon assignments-icon row">
                 <div class="icon-assignments-black etb-modal-icons"></div>
                 <span>Assignments</span>
-              </a>
-              <a href="#" class=" etb-modal-icon content-outline-icon row">
-                <div class="icon-content-outline-black etb-modal-icons"></div>
-                <span>Content Outline</span>
               </a>
               <a href="#" class=" etb-modal-icon grades-icon row">
                 <div class="icon-grades-black etb-modal-icons"></div>
@@ -127,6 +125,12 @@
               <a href="#" class="etb-nav_item_service_btn etb-modal-icon techsupport-icon">
                 <div class="icon-techsupport-black etb-modal-icons"></div>
                 <span>Instructor Name</span>
+              </a>
+              <hr></hr>
+              <h2>Section</h2>
+              <a href="#" class="etb-nav_item_service_btn etb-modal-icon techsupport-icon">
+                <div class="icon-techsupport-black etb-modal-icons"></div>
+                <span><?php print $section; ?></span>
               </a>
               <hr></hr>
               <h2>Syllabus</h2>
