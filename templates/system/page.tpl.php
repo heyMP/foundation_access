@@ -1,6 +1,3 @@
-<?php
-  krumo($variables);
-?>
 <!-- ---------------------------------------- -->
     <div id="etb-tool-nav" class="off-canvas-wrap" data-offcanvas>
       <div class="inner-wrap">
@@ -499,6 +496,12 @@
 
           <footer class="row">
             <div class="large-12 columns">
+              <div class="region-footer row">
+                <div class="large-6 columns">
+                  <?php print render($page['footer']); ?>
+                </div>
+              </div>
+
               <hr/>
               <div class="row">
                 <div class="large-6 columns">
