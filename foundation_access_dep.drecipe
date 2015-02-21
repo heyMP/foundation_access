@@ -13,6 +13,20 @@
 			]
 		},
 		{
+                        "command": "vset",
+                        "arguments": [
+                                "fences_default_classes",
+                                "1"
+                        ]
+                },
+		{
+                        "command": "vset",
+                        "arguments": [
+                                "fences_default_markup",
+                                "1"
+                        ]
+                },
+                {
 			"command": "vset",
 			"arguments": [
 				"theme_default",
