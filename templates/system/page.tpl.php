@@ -448,9 +448,21 @@
         </aside>
 
         <section class="main-section etb-book">
+          <?php if (!empty($page['header'])): ?>
+            <div class="region-header row">
+              <?php print render($page['header']); ?>
+            </div>
+          <?php endif; ?>
+
           <?php if (!empty($messages)): ?>
-            <div class="row">
+            <div class="region-messeges row">
               <?php print $messages; ?>
+            </div>
+          <?php endif; ?>
+
+          <?php if (!empty($page['help'])): ?>
+            <div class="region-help row">
+              <?php print render($page['help']); ?>
             </div>
           <?php endif; ?>
 
