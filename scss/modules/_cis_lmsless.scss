@@ -1,51 +1,118 @@
 /**
  * To use, enable the the block called CIS LMSless 
  */
-
-div.cis-lmsless {
-  .split.button span {
-    border-left-color: #efefef;
-    background:#fff;
-    &:hover {
-      background:#efefef;
+.cis-user-profile {
+  @media #{$small-only} {
+    
+   }
+}
+.lmsless-bar {
+  background-color: $bright-color;
+  border-bottom: 1px solid $accent-border-color;
+  float: left;
+  width: 100%;
+  &.sticky-bar {
+    @media #{$small-only} {
+      display:none;
     }
-    &:before {
-      border-top-color: rgba(0, 123, 160, 1);
-      border-bottom-color: transparent;
-      border-left-color: transparent;
-      border-right-color: transparent;
+    @media #{$medium-up} {
+      position: fixed;
+      top: -76px;
+      // top:0;
+      z-index: 9999;
+      width: 100%;
+      transition: all 300ms ease-out;
+      // opacity:0;
+    }
+    &.locator {
+      top:0;
+      // opacity:1;
+      a.user-profile-dropdown {
+        height: 3em;
+        padding-top: 0.9em;
+      }
+      div.cis-lmsless a.button {
+        height: 1em;
+        font-size: 1.2em;
+        padding: 0.3em 3.2em 2.2em 0.5em;
+      }
+    }
+  }
+  .f-dropdown{
+    background: #efefef;
+    border: solid 1px $accent-border-color;
+    max-width: 300px;
+
+    &.open {
+      margin-top:0;
+      
+      @media #{$small-only} {
+        left: 0 !important;
+        width:100% !important;
+      }
+      &.right:before, &.right:after, &:before, &:after {
+        content:none;
+      }
+
+      li {
+        a {
+          color:$link-color;
+          text-align: left;
+          text-transform: none; 
+          font-size: 1em;
+          padding:1em;
+          &:hover {
+            background-color: $bright-color;
+          }
+        }
+      }
+    }
+  }
+}
+div.cis-lmsless {
+  .split.button {
+    @media #{$small-only} {
+        padding-right: 3em;
+        padding-left: 0.5em;
+    }
+    span {
+      border-left: solid 1px $accent-border-color;
+      background:transparent;
+      &:hover {
+        background-color:$bright-color;
+      }
+      &:before {
+        border-top-color: rgba(0, 123, 160, 1);
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+        border-right-color: transparent;
+      }
     }
   }
 
   a {
     text-transform: uppercase;
-    font-size: 1.3em;
+    font-size: 1.4em;
     text-align: right;
     margin-bottom:0;
-
+     
     .slogan-lmsless-button {
       text-transform: uppercase;
       font-size: 0.5em;
     }
 
     &.button {
-      background:#fff;
+      background-color:transparent;
       // border-bottom: solid 1px #fff;
-      // border-left: solid 1px #fff;
-      color:#007ba0;
+      //border-left: solid 1px $accent-border-color;
+      color:$primary-color;
+      height:74px;
       &:hover {
-        background:#fff;
+        background-color:$bright-color;
       // border-bottom: solid 1px #efefef;
-      // border-left: solid 1px #efefef;
+      //border-left: solid 1px $accent-border-color;
       }
     }
-  }
-  .f-dropdown {
-    a {
-      text-align: left;
-      font-size: 1em;
-      text-transform: none;
-    }  
   }
 }
 // .block-cis-lmsless {

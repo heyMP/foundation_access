@@ -14,31 +14,42 @@
 // @media #{$xxlarge-only} { }
 
 // Non-modular or client styles for the .l-content region.
-body {
-	 font-size: 18px;
-	 font-family: Vollkorn;
-	 font-weight: 400;
-	 font-style: normal;
-}
+// body {
+// 	 font-size: 18px;
+// 	 font-family: "Vollkorn";
+// 	 font-weight: 400;
+// 	 font-style: normal;
+// }
 
 // article {
 // 	 margin: 0 auto;
 // 	 width: 960px;
 // }
 // 
-
+body {
+	background-color:$background-color;
+}
+.l-main {
+	background-color:$background-color;
+}
+.main {//to help center breadcrumbs
+	text-align:center;
+	article {
+		text-align:left;
+	}
+}
 
 h1 {
-	 font-family: "Asap";
+	 //font-family: "Asap";
 	 font-size: 5.5em;
 	 text-align: center;
 	 text-transform: inherit;
-	 font-weight: 700;
-	 font-style: normal;
+	 //font-weight: 700;
+	 //font-style: normal;
 	 letter-spacing: -1px;
 
 	 @media #{$small-up} {
-	 	margin: 0em 0em 0.5em 0em;
+	 	margin: 0em 0em 0.2em 0em;
 	 	font-size: 2.778em;
 	 	line-height: 0.82em;
 	 }
@@ -56,7 +67,7 @@ h1 {
 
 h2 {
 	 font-size: 1.526em;
-	 font-family: "Asap";
+	 //font-family: "Asap";
 	 line-height: 0.931em;
 	 margin-bottom: 1em;
 	 font-weight: 700;
@@ -82,12 +93,12 @@ h2 {
 
 .main h2 {
 	@media #{$small-only} {
-		width:100%;
 		padding-left:4%;
+		//width:100%;
 	 }
 	 @media #{$medium-only} {
 		padding-left:8%;
-		width: 100%;
+		//width: 100%;
 	 }
 }
 
@@ -112,7 +123,7 @@ p {
 		 border-right: 0;
 		 text-align: center;
 		 border-style: solid;
-
+		
 		 @media #{$small-up} {
 		 	margin: 1em 1em 1.8em;
 		 	padding: 0.7em 0 0.7em 0;
@@ -155,7 +166,7 @@ p {
 			line-height: 1.4em;
    			margin: 0em 1em 1.421em 1em;
    			padding: 0.313em 0px 0.313em 0.625em;
-   			font-family: "Vollkorn";
+   			font-family: "Vollkorn", "Georgia", serif;
 		 }
 
 		 @media #{$large-up} { 
@@ -174,7 +185,7 @@ p {
 		 font-size: 13px;
 		 letter-spacing: 2px;
 		 margin: 2.077em 0px 3.077em 0px;
-		 font-family: Vollkorn;
+		 font-family: "Vollkorn", "Georgia", serif;
 		 font-weight: 400;
 		 font-style: normal;
 	}
@@ -196,7 +207,10 @@ div {
 
 		 @media #{$small-only} {
 			@include p-column(1);
-
+			
+			p {
+				text-align: justify;
+			}
 			padding: 0 4% 5em 4%;
 		 }
 		 @media #{$medium-only} {
@@ -251,6 +265,9 @@ div.left-head {
 		 
 		@media #{$small-only} {
 			margin: 0px 0 1.5em 0;
+			p {
+				text-align: justify;
+			}
 		 }
 		
 		@media #{$medium-only} {
@@ -340,6 +357,11 @@ div.pull-quote-p {
 				padding: 0;
 
 			 }
+			 @media #{$small-only} {
+				width:inherit;
+				margin:0em 0 1.5em 0;
+				padding: 0 4% 0 4%;
+			}		
 		}
 	}
 
@@ -348,8 +370,9 @@ div.pull-quote-p {
 		padding: 0 0 1.421px 0;
 		
 		@media #{$small-only} {
-			margin:0 1.5em;
+			margin:0 4%;
 			padding: 0 0 1.421em 0;
+			text-align: justify;
 		}
 		
 		@media #{$medium-only} {
@@ -402,6 +425,23 @@ div.image-media {
 	 text-align: left;
 	 margin: 0;
 	 padding: 0 0 2em 0;
+	 
+	p.image-list-text {
+		 @media #{$small-only} {
+			text-align: justify;
+			margin: 0px 2em 2em 2em;
+			clear:both;
+		 }
+
+		 @media #{$medium-only} {
+			 margin: 0px 0px 2em 11em;
+		 }
+		 @media #{$medium-up} {
+			 text-align: left;
+			 clear:none;
+		 }
+		 padding: 0px;
+	}
 }
 
 img.image-media-left {
@@ -417,7 +457,9 @@ img.image-media-left {
 		 line-height: 1.2em;
 		 margin: 0 0 0.9em 20%;
 		 
-		 
+		 @media #{$small-only} {
+			margin: 0 1em 0.9em 20%;
+		 }
 		 @media #{$small-up} {
 
 			padding: 0 0 0 0;
@@ -786,11 +828,6 @@ p.testimonial-text:last-child {
 
 // h3 {
 // 	 padding: 0px;
-// }
-
-// p.image-list-text {
-// 	 padding: 0px;
-// 	 margin: 0px 0px 21.30221176147461px 28%;
 // }
 
 // img.image-media-left {

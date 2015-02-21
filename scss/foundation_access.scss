@@ -32,6 +32,10 @@
 // You may comment out bourbon if you don't want to use its library of mixins.
 // The theme will have compilation errors if Foundation is not imported.
 
+
+// Global Foundation Access Variables
+@import "base/colors";
+
 // Global Zurb Foundation variables.
 @import "vendor/foundation/variables";
 @import "vendor/foundation/settings";
@@ -71,11 +75,14 @@
 @import "layout/footer";
 
 // Modules
-// @import "modules/block";
+@import "modules/breadcrumbs";
 // @import "modules/button";
 @import "modules/admin_menu";
 @import "modules/cis_lmsless";
-@import "modules/topbar";
+@import "modules/banner_image";
+@import "modules/nav_topbar";
+@import "modules/admin_topbar";
+@import "modules/breakpoint_indicator";
 @import "modules/outline_links";
 @import "modules/action_links";
 @import "modules/page_tabs";

@@ -13,13 +13,6 @@
 //}
 
 /**
- * Implements template_preprocess_page
- *
- */
-//function foundation_access_preprocess_page(&$variables) {
-//}
-
-/**
  * Implements template_preprocess_node
  *
  */
@@ -132,6 +125,18 @@
 //}
 
 function foundation_access_preprocess_page(&$variables) {
+  drupal_add_css('//fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic|Vollkorn:400italic,400', array('group' => CSS_THEME));
+  $theme_vars = variable_get('theme_foundation_access_settings', array());
+  // see if we should display the logo based on toggle
+  if (isset($theme_vars['toggle_logo']) && $theme_vars['toggle_logo']) {
+    $variables['logo_state'] = TRUE;
+  }
+  else {
+    $variables['logo_state'] = FALSE;
+  }
+  if (!isset($variables['zurb_color'])) {
+    $variables['zurb_color'] = '#ccc';
+  }
   // Convenience variables
   if (!empty($variables['page']['sidebar_first'])){
     $left = $variables['page']['sidebar_first'];
@@ -365,25 +370,79 @@ function foundation_access_menu_link__menu_course_tools_menu(array $variables) {
  * Implements menu_tree__cis_service_connection_active_outline().
  */
 function foundation_access_menu_tree__cis_service_connection_active_outline($variables) {
-  return '<ul class="nav nav-list">' . $variables['tree'] . '</ul>';
+  return $variables['tree'];
 }
-
 /**
  * Implements menu_link__cis_service_connection_active_outline().
  */
 function foundation_access_menu_link__cis_service_connection_active_outline($variables) {
   $element = $variables['element'];
   $sub_menu = '';
+  $id = 'zfa-menu-panel-' . $element['#original_link']['mlid'];
   if ($element['#below']) {
-    $sub_menu = '<ul class="left active dropdown">' . drupal_render($element['#below']) . '</ul>';
-    $element['#attributes']['class'][] = 'has-dropdown';
+    $sub_menu = drupal_render($element['#below']);
   }
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
   // account for no link'ed items
   if ($element['#href'] == '<nolink>') {
     $output = '<a href="#">' . $output . '</a>';
   }
-  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+  // account for sub menu things being rendered differently
+  if (empty($sub_menu)) {
+    if ($element['#original_link']['p3'] == 0) {
+      $options = $element['#localized_options'];
+      $options['attributes']['class'][] = 'accordion-btn';
+      $options['attributes']['class'][] = 'button';
+      $return = '<li>' . l($element['#title'], $element['#href'], $options) . '</li>';
+    }
+    else if ($element['#original_link']['p5'] == 0 && $element['#original_link']['p4'] != 0 && $element['#href'] != '<nolink>') {
+      $options = $element['#localized_options'];
+      $options['attributes']['class'][] = 'outline-sub-link';
+      $options['attributes']['class'][] = 'small';
+      $options['attributes']['class'][] = 'button';
+      $options['attributes']['class'][] = 'fi-info';
+      $return = l($element['#title'], $element['#href'], $options);
+    }
+    else {
+      $return = '<li' . drupal_attributes($element['#attributes']) . '>' . $output . "</li>\n";
+    }
+  }
+  else {
+    /*<ul id="activeoutline" class="menu book-oultine slide-panels">
+  <li><a href='#unit-1' class="accordion-btn button">Unit 1</a>
+    <dl class="accordion" data-accordion="myAccordionGroup">
+      <dd class="accordion-navigation">
+        <h3>Lesson 1</h3>
+        <a href="#" class='outline-sub-link small button fi-info'>About</a>
+        <a href="#panel1c" class='outline-sub-link expand fi-page-multiple'>Topics</a>
+        <div id="panel1c" class="content">
+          <li><a href="#">Introduction</a></li>*/
+    // highest level different from drill down
+    if ($element['#original_link']['p3'] == 0) {
+      $return = '
+      <li><a href=\'#' . $id . '\' class="accordion-btn button">' . $element['#title'] .'</a>
+      <dl class="accordion" data-accordion="myAccordionGroup">
+      <dd class="accordion-navigation">' . $sub_menu .'</dd></dl></li>';
+    }
+    else if ($element['#original_link']['p4'] == 0) {
+      $return = '<h3>' . $element['#title'] . '</h3>' . "\n" . $sub_menu;
+    }
+    else if ($element['#original_link']['p5'] == 0) {
+      $return = '<a href="#panel' . $id . '" class="outline-sub-link expand fi-page-multiple">' . $element['#title'] .'</a>
+        <div id="panel' . $id . '" class="content">' . $sub_menu .'</div>';
+    }
+    else {
+      $return = '
+      <dd class="accordion-navigation">
+        <a href="#' . $id . '">' .
+          $element['#title'] .
+        '</a>' .
+        '<div id="' . $id . '" class="content">' . $sub_menu .
+        '</div>
+      </dd>';
+    }
+  }
+  return $return;
 }
 
 /**
@@ -394,7 +453,7 @@ function foundation_access_menu_local_tasks(&$variables) {
 
   if (!empty($variables['primary'])) {
     $variables['primary']['#prefix'] = '<h2 class="element-invisible">' . t('Primary tabs') . '</h2>';
-    $variables['primary']['#prefix'] .= '<ul class="local-task-tabs-1 button-group round">';
+    $variables['primary']['#prefix'] .= '<ul class="local-task-tabs-1 button-group">';
     $variables['primary']['#suffix'] = '</ul>';
     $output .= drupal_render($variables['primary']);
   }
@@ -438,3 +497,33 @@ function foundation_access_menu_local_task(&$variables) {
   $output .= "</li>\n";
   return  $output;
 }
+// Add Icons to menu - Add code to other menus.
+
+// function foundation_access_menu_link(array $variables) {
+//   $element = $variables['element'];
+//   $sub_menu = '';
+//   $element['#attributes']['class'][] = 'level-' . $element['#original_link']['depth'];
+//   if (isset($element['#original_link']['options']['attributes']['class'])) {
+//     $array_class = $element['#original_link']['options']['attributes']['class'];
+//     $count = count($array_class);
+//     for ($i=0; $i <= $count; $i++){
+//       if (substr($array_class[$i], 0, 5) == 'icon-' ){
+//         $icon = '<i class="' . $array_class[$i] . '"></i>';
+//         $output = '<a href="';
+//         if (isset($element['#original_link']['options']['attributes']['rel']) != 'nofollow') {
+//           $output .= $element['#href']; // If rel is set to 'nofollow' I don't need the link because I use it to activate Javascript. Remove these line if not a needed function...
+//         }
+//         $output .= '" title="' . $element['#title'] . '">' . $icon . '</a>';
+//         return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+//       }
+//     }
+//   }
+//   else {
+//     $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+//     if ($element['#below']) {
+//         $sub_menu = drupal_render($element['#below']);
+//       }
+//     return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+//   }
+// }
+
