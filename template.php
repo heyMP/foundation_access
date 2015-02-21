@@ -17,3 +17,9 @@ function foundation_access_preprocess_page(&$variables) {
  */
 function foundation_access_preprocess_node(&$variables) {
 }
+
+/**
+ * Implements template_preprocess_node.
+ */
+function foundation_access_preprocess_region(&$variables) {
+}
