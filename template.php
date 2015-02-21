@@ -38,59 +38,48 @@ function foundation_access_menu_tree__cis_service_connection_active_outline($var
 function foundation_access_menu_link__cis_service_connection_active_outline($variables) {
   $element = $variables['element'];
   $sub_menu = '';
-  $id = 'zfa-menu-panel-' . $element['#original_link']['mlid'];
+  $return = '';
   if ($element['#below']) {
     $sub_menu = drupal_render($element['#below']);
   }
-  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  $id = 'zfa-menu-panel-' . $element['#original_link']['mlid'];
+  //$output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  $output = $element['#title'];
   // account for no link'ed items
   if ($element['#href'] == '<nolink>') {
     $output = '<a href="#">' . $output . '</a>';
   }
   // account for sub menu things being rendered differently
   if (empty($sub_menu)) {
-    if ($element['#original_link']['p3'] == 0) {
-      $options = $element['#localized_options'];
-      $options['attributes']['class'][] = 'accordion-btn';
-      $options['attributes']['class'][] = 'button';
-      $return = '<li>' . l($element['#title'], $element['#href'], $options) . '</li>';
-    }
-    else if ($element['#original_link']['p5'] == 0 && $element['#original_link']['p4'] != 0 && $element['#href'] != '<nolink>') {
-      $options = $element['#localized_options'];
-      $options['attributes']['class'][] = 'outline-sub-link';
-      $options['attributes']['class'][] = 'small';
-      $options['attributes']['class'][] = 'button';
-      $options['attributes']['class'][] = 'fi-info';
-      $return = l($element['#title'], $element['#href'], $options);
-    }
-    else {
-      $return = '<li' . drupal_attributes($element['#attributes']) . '>' . $output . "</li>\n";
-    }
+    // ending elements
+    $return .= '<li><a href="' . $element['#href'] . '"><div class="icon-assignment-white outline-nav-icon" data-grunticon-embed></div>' . $output . '</a></li>';
   }
   else {
     if ($element['#original_link']['p3'] == 0) {
-      $return = '
-      <li><a href=\'#' . $id . '\' class="accordion-btn button">' . $element['#title'] .'</a>
-      <dl class="accordion" data-accordion="myAccordionGroup">
-      <dd class="accordion-navigation">' . $sub_menu .'</dd></dl></li>';
+      $short = preg_replace('/[^a-zA-Z0-9\s]/', '', strtolower($output));
+      $return .= '<section role="tabpanel" aria-hidden="true" class="content" id="' . $short . '-panel">
+      <ul class="off-canvas-list content-outline-navigation">
+      <h2>' . $output . '</h2>
+      <h3>A long time ago, in science</h3>' . $sub_menu . "</ul>\n</section>";
     }
-    else if ($element['#original_link']['p4'] == 0) {
-      $return = '<h3>' . $element['#title'] . '</h3>' . "\n" . $sub_menu;
+    elseif ($element['#original_link']['p4'] == 0) {
+      $return .= '<li class="has-submenu"><a href="#"><div class="icon-content-white outline-nav-icon" data-grunticon-embed></div><span class="outline-nav-text">' . $output . '</span></a>
+        <ul class="left-submenu level-1-sub">
+          <h2>' . $output . '</h2>
+          <h3>Lets do Science!</h3>
+          <li class="back">
+          <a href="#">Back to all Lessons</a></li>' . $sub_menu .'</ul></li>';
     }
-    else if ($element['#original_link']['p5'] == 0) {
-      $return = '<a href="#panel' . $id . '" class="outline-sub-link expand fi-page-multiple">' . $element['#title'] .'</a>
-        <div id="panel' . $id . '" class="content">' . $sub_menu .'</div>';
-    }
-    else {
-      $return = '
-      <dd class="accordion-navigation">
-        <a href="#' . $id . '">' .
-          $element['#title'] .
-        '</a>' .
-        '<div id="' . $id . '" class="content">' . $sub_menu .
-        '</div>
-      </dd>';
-    }
+    elseif ($element['#original_link']['p5'] == 0) {
+      $return .= '<li><label>' . $output . '</label></li>
+        <li class="has-submenu"><a href="' . $element['#href'] .'">Link 2 w/ submenu</a>
+            <ul class="left-submenu">
+                <li class="back"><a href="#">Back</a></li>
+                ' . $sub_menu . '
+            </ul>
+        </li>
+        <li><a href="#">...</a></li>';
+      }
   }
   return $return;
 }

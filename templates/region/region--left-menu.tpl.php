@@ -33,7 +33,6 @@
     <li class="tab-title active" role="presentational"><a href="#unit1-panel" role="tab" tabindex="0" aria-selected="true" controls="unit1-panel">Unit 1</a></li>
     <li class="tab-title" role="presentational"><a href="#unit-2-panel" role="tab" tabindex="1" aria-selected="true" controls="unit-2-panel">Unit 2</a></li>
     <li class="tab-title" role="presentational"><a href="#unit-3-panel" role="tab" tabindex="2" aria-selected="true" controls="unit-3-panel">Unit 3</a></li>
-    <li class="tab-title" role="presentational"><a href="#unit-4-panel" role="tab" tabindex="3" aria-selected="true" controls="unit-4-panel">Unit 4</a></li>
     <li class="tab-title" role="presentational"><a href="#unit-5-panel" role="tab" tabindex="4" aria-selected="true" controls="unit-5-panel">Unit 5</a></li>
   </ul>
 
@@ -258,86 +257,6 @@
       <!-- <li><label>Foundation</label></li> -->
       <h2>Lesson 9</h2>
       <h3>Being one with science</h3>
-      <li><a href="#"><div class="icon-about-white outline-nav-icon" data-grunticon-embed></div><span class="outline-nav-text">About</span></a></li>
-      <li class="has-submenu"><a href="#"><div class="icon-content-white outline-nav-icon" data-grunticon-embed></div><span class="outline-nav-text">Content</span></a>
-          <ul class="left-submenu level-1-sub">
-              <h2>Lesson 4</h2>
-              <h3>Let's do Science!</h3>
-              <li class="back"><a href="#">Back to all Lessons</a></li>
-              <li><label>Content</label></li>
-              <li><a href="#">Link 1</a></li>
-              <li class="has-submenu"><a href="#">Link 2 w/ submenu</a>
-                  <ul class="left-submenu">
-                      <li class="back"><a href="#">Back</a></li>
-                      <li><label>Level 2</label></li>
-                      <li><a href="#">...</a></li>
-                  </ul>
-              </li>
-              <li><a href="#">...</a></li>
-          </ul>
-      </li>
-      <li><a href="#"><div class="icon-assignment-white outline-nav-icon" data-grunticon-embed></div>Assignment 5</a></li>
-      <li><a href="#"><div class="icon-quiz-white outline-nav-icon" data-grunticon-embed></div>Quiz 7</a></li>
-      <li><a href="#"><div class="icon-discuss-white outline-nav-icon" data-grunticon-embed></div>Lesson Discussion</a></li>
-    </ul>
-    </section>
-    <section role="tabpanel" aria-hidden="true" class="content" id="unit-4-panel">
-      <ul class="off-canvas-list content-outline-navigation">
-      <!-- <li><label>Foundation</label></li> -->
-      <h2>Lesson 10</h2>
-      <h3>A long time ago, in science</h3>
-      <li><a href="#"><div class="icon-about-white outline-nav-icon" data-grunticon-embed></div><span class="outline-nav-text">About</span></a></li>
-      <li class="has-submenu"><a href="#"><div class="icon-content-white outline-nav-icon" data-grunticon-embed></div><span class="outline-nav-text">Content</span></a>
-          <ul class="left-submenu level-1-sub">
-              <h2>Lesson 4</h2>
-              <h3>Let's do Science!</h3>
-              <li class="back"><a href="#">Back to all Lessons</a></li>
-              <li><label>Content</label></li>
-              <li><a href="#">Link 1</a></li>
-              <li class="has-submenu"><a href="#">Link 2 w/ submenu</a>
-                  <ul class="left-submenu">
-                      <li class="back"><a href="#">Back</a></li>
-                      <li><label>Level 2</label></li>
-                      <li><a href="#">...</a></li>
-                  </ul>
-              </li>
-              <li><a href="#">...</a></li>
-          </ul>
-      </li>
-      <li><a href="#"><div class="icon-assignment-white outline-nav-icon" data-grunticon-embed></div>Assignment 5</a></li>
-      <li><a href="#"><div class="icon-quiz-white outline-nav-icon" data-grunticon-embed></div>Quiz 7</a></li>
-      <li><a href="#"><div class="icon-discuss-white outline-nav-icon" data-grunticon-embed></div>Lesson Discussion</a></li>
-    </ul>
-    <ul class="off-canvas-list content-outline-navigation">
-      <!-- <li><label>Foundation</label></li> -->
-      <h2>Lesson 11</h2>
-      <h3>Ready, set, science!</h3>
-      <li><a href="#"><div class="icon-about-white outline-nav-icon" data-grunticon-embed></div><span class="outline-nav-text">About</span></a></li>
-      <li class="has-submenu"><a href="#"><div class="icon-content-white outline-nav-icon" data-grunticon-embed></div><span class="outline-nav-text">Content</span></a>
-          <ul class="left-submenu level-1-sub">
-              <h2>Lesson 4</h2>
-              <h3>Let's do Science!</h3>
-              <li class="back"><a href="#">Back to all Lessons</a></li>
-              <li><label>Content</label></li>
-              <li><a href="#">Link 1</a></li>
-              <li class="has-submenu"><a href="#">Link 2 w/ submenu</a>
-                  <ul class="left-submenu">
-                      <li class="back"><a href="#">Back</a></li>
-                      <li><label>Level 2</label></li>
-                      <li><a href="#">...</a></li>
-                  </ul>
-              </li>
-              <li><a href="#">...</a></li>
-          </ul>
-      </li>
-      <li><a href="#"><div class="icon-assignment-white outline-nav-icon" data-grunticon-embed></div>Assignment 5</a></li>
-      <li><a href="#"><div class="icon-quiz-white outline-nav-icon" data-grunticon-embed></div>Quiz 7</a></li>
-      <li><a href="#"><div class="icon-discuss-white outline-nav-icon" data-grunticon-embed></div>Lesson Discussion</a></li>
-    </ul>
-    <ul class="off-canvas-list content-outline-navigation">
-      <!-- <li><label>Foundation</label></li> -->
-      <h2>Lesson 12</h2>
-      <h3>A new science</h3>
       <li><a href="#"><div class="icon-about-white outline-nav-icon" data-grunticon-embed></div><span class="outline-nav-text">About</span></a></li>
       <li class="has-submenu"><a href="#"><div class="icon-content-white outline-nav-icon" data-grunticon-embed></div><span class="outline-nav-text">Content</span></a>
           <ul class="left-submenu level-1-sub">
