@@ -39,11 +39,6 @@
         </ul>
         <!-- Eco Nav Modals ---------------------------------------- -->
         <div id="apps-nav-modal" class="reveal-modal etb-nav-modal" data-reveal>
-          <!-- Center Search Section -->
-            <!-- <form class="etb-nav_item_search hide-for-medium-up">
-              <input class="etb-nav_item_search_input" type="search" placeholder="Search..."/>
-              <!-- <button class="etb-nav_item_search_btn" type="submit">Search</button> -->
-            <!-- </form> -->
             <h1>Course</h1>
               <hr></hr>
               <h2>Services</h1>
