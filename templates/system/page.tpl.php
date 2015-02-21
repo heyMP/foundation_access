@@ -1,4 +1,4 @@
-    <!-- Ecosystem Top Nav ---------------------------------------- -->
+<!-- Ecosystem Top Nav ---------------------------------------- -->
 <div id="etb-course-nav" class="row full collapse">
   <div class="columns small-6 medium-4">
     <nav class="top-bar etb-nav etb-nav--center--parent" data-options="is_hover: false" data-topbar role="navigation">
@@ -638,36 +638,12 @@
           <div class="row">
             <div class="content-element-region small-12 medium-12 large-12 columns">
               <div class="row">
-                <div class="large-12 columns">
-
-                  <h1>Because, Science! <br><small>This is my course. It's awesome.</small></h1>
-
-                  <div class="magellan-wrap">
-                    <div class="sticky-content-nav" data-magellan-expedition="fixed">
-                      <dl class="sub-nav">
-                        <dd data-magellan-arrival="vulture">
-                          <a href="#vulture">Vulture's Eye</a>
-                        </dd>
-                        <dd data-magellan-arrival="terror">
-                          <a href="#terror">Terror</a>
-                        </dd>
-                        <dd data-magellan-arrival="officers">
-                          <a href="#officers">Officers</a>
-                        </dd>
-                        <dd data-magellan-arrival="breath">
-                          <a href="#breath">I gasped for breath</a>
-                        </dd>
-                        <dd data-magellan-arrival="villains">
-                          <a href="#villains">Villains</a>
-                        </dd>
-                      </dl>
-                    </div>
-                  </div>
+                <div class="small-12 medium-12 large-push-1 large-10 columns" role="content">
+                  <?php if ($title): ?>
+                    <h1><?php print $title; ?></h1>
+                  <?php endif; ?>
                   <hr>
-                  <p class="txtbk-intro">
-                    TRUE! – nervous – very, very dreadfully nervous I had been and am; but why will you say that I am mad?&nbsp;The disease had sharpened my senses – not destroyed – not dulled them.
-                  </p>
-                  <hr>
+                  <?php print render($page['content']); ?>
                 </div>
               </div>
               <div class="row">
