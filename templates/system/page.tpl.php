@@ -1,3 +1,6 @@
+<?php
+  // krumo($variables);
+?>
 <!-- Ecosystem Top Nav ---------------------------------------- -->
 <div id="etb-course-nav" class="row full collapse">
   <div class="columns small-6 medium-4">
@@ -629,18 +632,18 @@
         </aside>
 
         <section class="main-section etb-book">
-         <div class="row">
-            <div data-alert class="alert-box messages-alerts content-element-region small-12 columns">
-              This is a test of the emergency alert system. This is only a test.
-              <a class="close">&#215;</a>
+          <?php if (!empty($messages)): ?>
+            <div class="row">
+              <?php print $messages; ?>
             </div>
-          </div>
+          <?php endif; ?>
+
           <div class="row">
             <div class="content-element-region small-12 medium-12 large-12 columns">
               <div class="row">
                 <div class="small-12 medium-12 large-push-1 large-10 columns" role="content">
                   <?php if ($title): ?>
-                    <h1><?php print $title; ?></h1>
+                    <h1><?php print $title; ?><br><small>This is my course. It's awesome.</small></h1>
                   <?php endif; ?>
                   <hr>
                   <?php print render($page['content']); ?>
