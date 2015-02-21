@@ -68,6 +68,18 @@
     -o-transform: $transform;
     transform: $transform;
 }
+// Transition
+// .class { @include transition($transition-property, $transition-time, $method); }
+// $transition-property = the property you want to transition
+// $transition-time = seconds you want the transition to last
+// $method = how you want it to transition - e.g. ease-in-out
+@mixin transition($transition-property:all, $transition-time:0.2s, $easing: ease-in-out) {
+    -webkit-transition: $transition-property $transition-time $easing;
+    -moz-transition: $transition-property $transition-time $easing;
+    -ms-transition: $transition-property $transition-time $easing;
+    -o-transition: $transition-property $transition-time $easing;
+    transition: $transition-property $transition-time $easing;
+}
 // Text Shadows
 @mixin text-shadow($shadow){
     -webkit-text-shadow: $shadow;

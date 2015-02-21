@@ -92,7 +92,9 @@ ul.off-canvas-list li a {
     display: flex;
     justify-content:center;
   }
-  
+  &.active {
+    
+  }
   &.tabs .tab-title>a {
     padding:0.5rem 1rem;
     background-color:transparent;

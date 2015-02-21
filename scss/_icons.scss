@@ -5,6 +5,9 @@
 img.svg {
 	width:1.5rem;
 }
+
+
+// Ecosystem tool bar items
 .etb-icon {
 	height: 4.25rem;   
 	display: block;
@@ -27,7 +30,6 @@ img.svg {
 			width: 3em;
 			span {
 	            padding: 0.65rem 0 0 2rem;
-
 			}
 		}
 		@media #{$medium-up} {
@@ -35,7 +37,6 @@ img.svg {
 			padding: 0.8rem 0.2rem 0rem 1rem;
 			span {
 	            padding: 0.65rem 0 0 2rem;
-
 			}
 		}
 		@media #{$large-up} {
@@ -43,12 +44,10 @@ img.svg {
 			padding: 0.8rem 0.5rem 0rem 1rem;
 		}
 		@media #{$xlarge-up} {
-			
 			padding: 0.8rem 0.8rem 0rem 1rem;
 		}
 	}
 	&.user-icon {
-		
 		@media #{$small-up} {
 			width: 2.625em;
 			padding: 0.8rem 0.5rem 0rem 0.5rem;
@@ -58,7 +57,6 @@ img.svg {
 			padding: 0.8rem 0.7875rem 0rem 0.7875rem;
 			span {
 	            padding: 0.65rem 0 0 2rem;
-
 			}
 		}
 		@media #{$large-up} {
@@ -81,7 +79,6 @@ img.svg {
 			padding: 0.8rem 0.7875rem 0rem 0.7875rem;
 			span {
 	            padding: 0.65rem 0 0 2rem;
-
 			}
 		}
 		@media #{$large-up} {
@@ -89,7 +86,6 @@ img.svg {
 			padding: 0.8rem 0.5rem 0rem 0.5rem;
 		}
 		@media #{$xlarge-up} {
-			
 			padding: 0.8rem 0.8rem 0rem 1rem;
 		}
 	}
@@ -104,7 +100,6 @@ img.svg {
 			padding: 0.8rem 0.7875rem 0rem 0.7875rem;
 			span {
 	            padding: 0.65rem 0 0 2rem;
-
 			}
 		}
 		@media #{$large-up} {
@@ -112,7 +107,6 @@ img.svg {
 			padding: 0.8rem 0.5rem 0rem 0.5rem;
 		}
 		@media #{$xlarge-up} {
-			
 			padding: 0.8rem 0.8rem 0rem 1rem;
 		}
 	}
@@ -135,20 +129,31 @@ img.svg {
 	height: rem-calc(26);
 	width: rem-calc(26);
 }
-.outline-nav-icon {
-	height:rem-calc(30);
-	width:rem-calc(30);
-	float:left;
-	@include opacity(0.3);
-}
-.outline-nav-icon {
+
+// Service toolbar menu items
+.off-canvas-toolbar-item {
+	margin: 0.4rem;
+	display: block;
+	height: 2.8125rem;
+	@include opacity(0.2);
+	@include transition();
 	
-		margin-right:1rem;
-
+	&:hover, &:focus {
+			@include opacity(0.8);
+			@include transition();
+		}
 	
-
+	&-icon {
+		width: 2rem;
+		height: 2rem;
+		display: inline-block;
+		
+		
+		
+	}
 }
 
+// Off-canvas menu toggle icon
 @media #{$small-only} {
 	.left-off-canvas-toggle.close {
 		display: block;
@@ -167,4 +172,14 @@ img.svg {
 	.left-off-canvas-toggle.close {
 		display: none;
 	}
+}
+// Off-canvas menu items
+.outline-nav-icon {
+	height:rem-calc(30);
+	width:rem-calc(30);
+	float:left;
+	@include opacity(0.3);
+}
+.outline-nav-icon {
+	margin-right:1rem;
 }

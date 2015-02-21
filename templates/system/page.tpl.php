@@ -4,7 +4,7 @@
 <!-- ---------------------------------------- -->
     <div id="etb-tool-nav" class="off-canvas-wrap" data-offcanvas>
       <div class="inner-wrap">
-        <nav class="tab-bar etb-tool">
+                <nav class="tab-bar etb-tool">
           <section class="left">
             <a class="left-off-canvas-toggle menu-icon" ><span>Outline</span></a>
           </section>
@@ -14,19 +14,19 @@
           </section>
 
           <section class="right-small">
-            <a href="#" class="etb-nav_item_service_btn etb-modal-icon access-icon" data-dropdown="accessibility-drop" aria-controls="drop2" aria-expanded="false">
-                <div class="icon-access-white etb-modal-icons"></div>
+            <a href="#" class="off-canvas-toolbar-item access-icon" data-dropdown="accessibility-drop" aria-controls="accessibility-drop" aria-expanded="false">
+                <div class="icon-access-white off-canvas-toolbar-item-icon"></div>
                 <!-- <span>Accessibilty</span> -->
               </a>
-
-            <div id="accessibility-drop" data-dropdown-content class="f-dropdown content" aria-hidden="true" tabindex="-1">
-             <div class="switch small radius">
-              <input id="exampleCheckboxSwitch" type="checkbox">
-              <label for="exampleCheckboxSwitch"></label>
-            </div>
-            </div>
-
           </section>
+          <!-- accessibility dropdown -->
+          <div id="accessibility-drop" data-dropdown-content class="f-dropdown content large" aria-hidden="true" tabindex="-1">
+             <div class="switch small radius">
+              <input id="enable-page-reader-switch" type="checkbox">
+              <label for="enable-page-reader-switch"></label>
+             </div>
+            </div>
+            <!-- /accessibility dropdown -->
         </nav>
 
         <aside class="left-off-canvas-menu">
