@@ -1,0 +1,8 @@
+#accessibility-drop {
+	width:20em;
+	height:auto;
+	@media #{$small-only} {
+		width:100%;
+	}
+
+}
