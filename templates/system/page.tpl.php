@@ -1,5 +1,5 @@
 <?php
-  // krumo($variables);
+  krumo($variables);
 ?>
 <!-- Ecosystem Top Nav ---------------------------------------- -->
 <div id="etb-course-nav" class="row full collapse">
@@ -652,7 +652,7 @@
 
                   <?php if ($breadcrumb): print $breadcrumb; endif; ?>
 
-                  <?php if ($title && !$is_front): ?>
+                  <?php if ($title): ?>
                     <?php print render($title_prefix); ?>
                       <h1 id="page-title" class="title"><?php print $title; ?>
                         <br><small>This is my course. It's awesome.</small>
