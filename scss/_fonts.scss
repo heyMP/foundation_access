@@ -125,7 +125,9 @@ p.testimonial-title {
 ul.off-canvas-list li a {
 	@extend %opensans-light;
 }
-a.etb-nav_item_service_btn span{
+a.etb-nav_item_service_btn span,
+a.etb-modal-icon span,
+a.modal-img-link span {
 	@extend %opensans-light;
 }
 .etb-nav-modal h1 {
