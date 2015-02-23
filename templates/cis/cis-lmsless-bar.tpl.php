@@ -47,8 +47,8 @@
                 <span>Content Outline</span>
               </a>
               <?php foreach ($services as $service) : ?>
-              <a href="<?php print $service['url']; ?>" class=" etb-modal-icon calendar-icon row">
-                <div class="icon-calendar-black etb-modal-icons round"></div>
+              <a href="<?php print $service['url']; ?>" class=" etb-modal-icon cis-icon row">
+                <div class="icon-cis-black etb-modal-icons round"></div>
                 <span><?php print $service['title']; ?></span>
               </a>
               <?php endforeach ?>
