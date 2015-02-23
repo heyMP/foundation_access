@@ -89,26 +89,27 @@
 
           <footer class="row">
             <div class="large-12 columns">
-              <div class="region-footer row">
-                <div class="large-6 columns">
-                  <?php print render($page['footer']); ?>
-                </div>
-              </div>
-
               <hr/>
               <div class="row">
-                <div class="large-6 columns">
-                  <p>© Copyright no one at all. Go to town.</p>
-                </div>
-                <div class="large-6 columns">
-                  <ul class="inline-list right">
-                    <li><a href="#">Link 1</a></li>
-                    <li><a href="#">Link 2</a></li>
-                    <li><a href="#">Link 3</a></li>
-                    <li><a href="#">Link 4</a></li>
-                  </ul>
-                </div>
+                <?php if (!empty($page['footer'])): ?>
+                <?php print render($page['footer']); ?>
+                <?php endif; ?>
               </div>
+              <?php if (!empty($page['footer_firstcolumn']) || !empty($page['footer_secondcolumn'])): ?>
+              <hr/>
+              <div class="row">
+                <?php if (!empty($page['footer_firstcolumn'])): ?>
+                <div class="large-6 columns">
+                  <?php print render($page['footer_firstcolumn']); ?>
+                </div>
+                <?php endif; ?>
+                <?php if (!empty($page['footer_secondcolumn'])): ?>
+                <div class="large-6 columns">
+                  <?php print render($page['footer_secondcolumn']); ?>
+                </div>
+                <?php endif; ?>
+              </div>
+              <?php endif; ?>
             </div>
           </footer>
 
