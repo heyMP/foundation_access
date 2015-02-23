@@ -53,7 +53,7 @@
   <?php print $styles; ?>
   <?php print $scripts; ?>
   <!-- FONTS -->
-  <link href='https://fonts.googleapis.com/css?family=Asap:400,700,400italic|Vollkorn:400italic,400,700|Open+Sans:700,300,600' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Asap:400,700,400italic|Vollkorn:400italic,400,700|Open+Sans:700,300,600' rel='stylesheet' type='text/css'>
   <script>
       /*! grunt-grunticon Stylesheet Loader - v2.1.2 | https://github.com/filamentgroup/grunticon | (c) 2015 Scott Jehl, Filament Group, Inc. | MIT license. */
 
