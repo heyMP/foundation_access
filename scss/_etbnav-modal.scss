@@ -55,6 +55,7 @@ $modal-headings-color:#575757;
   h1 {
     color:$modal-headings-color;
     font-size: rem-calc(22);
+    text-align: center;
     }
   h2 {
     color:lighten($modal-headings-color, 50%);
@@ -62,5 +63,11 @@ $modal-headings-color:#575757;
   }
   hr {
     margin: 1rem 0 0;
+    &.pad-1 {
+      margin: 1rem 0 1rem;
+    }
   }
+}
+.account-logout {
+  display:block;
 }

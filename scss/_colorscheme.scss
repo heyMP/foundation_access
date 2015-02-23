@@ -4,7 +4,7 @@
 
 // General Styles
 $bright-color:#fff;
-$background-color:#bbb; // body, .l-main
+$background-color: #bbb; // body, .l-main, lmsless-bar
 $dark-background-color:#333;
 $accent-color: #cccccc;
 $accent-border-color: #d8d8d8;
@@ -21,11 +21,14 @@ $book-bg-color:$background-color;
 $tool-bar-base-color:#fff;
 $tool-bar-dark-color:#000;
 $menu-icon-color:$contrast-color;
+$icon-border-color:#3e3e3e;
 
 // Off-canvas Menu
 $active-menu-bg:#848484;
 $active-menu-link-border:darken($active-menu-bg,10%);
 $active-menu-border: darken($active-menu-bg,35%);
+$round-icon-bg-color:#fff;
+$round-icon-bg-hover-color:#ccc;
 
 // Text Content 
 $text-color: #313131;
