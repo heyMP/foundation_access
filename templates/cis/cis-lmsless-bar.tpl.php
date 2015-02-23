@@ -98,7 +98,7 @@
               <h2>contact</h2>
               <a href="#" class="etb-nav_item_service_btn row">
                 <div class="column">
-                  <img alt="placeholder image" src="http://placehold.it/100x100">
+                  <img alt="placeholder image" src="//placehold.it/100x100">
                 </div>
                 <div class="column"> <span>Instructor</span></div>
 
