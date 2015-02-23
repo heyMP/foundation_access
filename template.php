@@ -60,18 +60,18 @@ function foundation_access_menu_link__cis_service_connection_active_outline($var
       if (empty($element['#attributes']['class'])) {
         $element['#attributes']['class'] = array();
       }
-      $short = preg_replace('/[^a-zA-Z0-9\s]/', '', strtolower($element['#title']));
+      $short = preg_replace('/[^a-zA-Z0-9]/', '', strtolower($element['#title']));
       $return .= '<section role="tabpanel" aria-hidden="true" class="content" id="' . $short . '-panel">
       <ul class="off-canvas-list content-outline-navigation ' . implode(' ', $element['#attributes']['class']) . '">
       <h2>' . $element['#title'] . '</h2>
-      <h3></h3>' . $sub_menu . "</ul>\n</section>";
+      <h3>Subtitle</h3>' . $sub_menu . "</ul>\n</section>";
       // @todo fill the H3 with something meaningful
     }
     elseif ($element['#original_link']['p4'] == 0) {
       $return .= '<li class="has-submenu"><a href="#"><div class="icon-content-white outline-nav-icon" data-grunticon-embed></div><span class="outline-nav-text">' . $element['#title'] . '</span></a>
         <ul class="left-submenu level-1-sub">
           <h2>' . $element['#title'] . '</h2>
-          <h3></h3>
+          <h3>Subtitle</h3>
           <li class="back">
           <a href="#">' . t('Back') . '</a></li>' . $sub_menu . '</ul></li>';
       // @todo fill the H3 with something meaningful
