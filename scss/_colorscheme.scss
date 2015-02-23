@@ -4,7 +4,7 @@
 
 // General Styles
 $bright-color:#fff;
-$background-color: #f4f4f4; // body, .l-main, lmsless-bar
+$background-color:#bbb; // body, .l-main
 $dark-background-color:#333;
 $accent-color: #cccccc;
 $accent-border-color: #d8d8d8;
@@ -17,7 +17,7 @@ $text-on-dark-color:#fff;
 $etb-nav-bg-color:#efefef;
 $etb-nav-btn-bg-color:darken($etb-nav-bg-color,20%);
 $etb-tool-bg-color:#3e3e3e;
-$book-bg-color:#bbb;
+$book-bg-color:$background-color;
 $tool-bar-base-color:#fff;
 $tool-bar-dark-color:#000;
 $menu-icon-color:$contrast-color;
