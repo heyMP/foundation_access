@@ -64,16 +64,16 @@ function foundation_access_menu_link__cis_service_connection_high_level_outline(
 }
 
 /**
- * Implements menu_tree__cis_service_connection_active_outline().
+ * Implements menu_tree__cis_service_connection_all_active_outline().
  */
-function foundation_access_menu_tree__cis_service_connection_active_outline($variables) {
+function foundation_access_menu_tree__cis_service_connection_all_active_outline($variables) {
   return $variables['tree'];
 }
 
 /**
- * Implements menu_link__cis_service_connection_active_outline().
+ * Implements menu_link__cis_service_connection_all_active_outline().
  */
-function foundation_access_menu_link__cis_service_connection_active_outline($variables) {
+function foundation_access_menu_link__cis_service_connection_all_active_outline($variables) {
   $element = $variables['element'];
   $sub_menu = '';
   $return = '';
