@@ -49,13 +49,15 @@ function foundation_access_menu_link__cis_service_connection_high_level_outline(
     if (in_array('active-trail', $element['#attributes']['class'])) {
       $element['#attributes']['class'][] = 'active';
       $aria = 'true';
+      $tab = '0';
     }
     else {
       $aria = 'false';
+      $tab = '-1';
     }
     $return .= '
     <li class="tab-title ' . implode(' ', $element['#attributes']['class']) . '" role="presentational">
-      <a href="#' . $short . '-panel" role="tab" tabindex="0" aria-selected="' . $aria . '" controls="' . $short . '-panel">' . $element['#title'] . '</a>
+      <a href="#' . $short . '-panel" role="tab" tabindex="' . $tab . '" aria-selected="' . $aria . '" controls="' . $short . '-panel">' . $element['#title'] . '</a>
     </li>';
   }
   return $return;
