@@ -26,6 +26,42 @@ function foundation_access_preprocess_node(&$variables) {
 // Active Book Outline (Sidebar)
 
 /**
+ * Implements menu_tree__cis_service_connection_high_level_outline().
+ */
+function foundation_access_menu_tree__cis_service_connection_high_level_outline($variables) {
+  return '<ul class="tabs outline-nav-tabs" data-tab role="tablist">' . $variables['tree'] . '</ul>';
+}
+
+/**
+ * Implements menu_link__cis_service_connection_high_level_outline().
+ */
+function foundation_access_menu_link__cis_service_connection_high_level_outline($variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+  $return = '';
+  $id = 'zfa-menu-panel-' . $element['#original_link']['mlid'];
+  if ($element['#original_link']['p3'] == 0) {
+    if (empty($element['#attributes']['class'])) {
+        $element['#attributes']['class'] = array();
+    }
+    $short = preg_replace('/[^a-zA-Z0-9]/', '', strtolower($element['#title']));
+    // test for active class, meaning this should be expanded by default
+    if (in_array('active-trail', $element['#attributes']['class'])) {
+      $element['#attributes']['class'][] = 'active';
+      $aria = 'true';
+    }
+    else {
+      $aria = 'false';
+    }
+    $return .= '
+    <li class="tab-title ' . implode(' ', $element['#attributes']['class']) . '" role="presentational">
+      <a href="#' . $short . '-panel" role="tab" tabindex="0" aria-selected="' . $aria . '" controls="' . $short . '-panel">' . $element['#title'] . '</a>
+    </li>';
+  }
+  return $return;
+}
+
+/**
  * Implements menu_tree__cis_service_connection_active_outline().
  */
 function foundation_access_menu_tree__cis_service_connection_active_outline($variables) {
@@ -43,7 +79,6 @@ function foundation_access_menu_link__cis_service_connection_active_outline($var
     $sub_menu = drupal_render($element['#below']);
   }
   $id = 'zfa-menu-panel-' . $element['#original_link']['mlid'];
-  //$output = l($element['#title'], $element['#href'], $element['#localized_options']);
   // account for no link'ed items
   if ($element['#href'] == '<nolink>') {
     $output = '<a href="#">' . $element['#title'] . '</a>';
@@ -61,7 +96,15 @@ function foundation_access_menu_link__cis_service_connection_active_outline($var
         $element['#attributes']['class'] = array();
       }
       $short = preg_replace('/[^a-zA-Z0-9]/', '', strtolower($element['#title']));
-      $return .= '<section role="tabpanel" aria-hidden="true" class="content" id="' . $short . '-panel">
+      // test for active class, meaning this should be expanded by default
+      if (in_array('active-trail', $element['#attributes']['class'])) {
+        $element['#attributes']['class'][] = 'active';
+        $aria = 'true';
+      }
+      else {
+        $aria = 'false';
+      }
+      $return .= '<section role="tabpanel" aria-hidden="' . $aria . '" class="content" id="' . $short . '-panel">
       <ul class="off-canvas-list content-outline-navigation ' . implode(' ', $element['#attributes']['class']) . '">
       <h2>' . $element['#title'] . '</h2>
       <h3>Subtitle</h3>' . $sub_menu . "</ul>\n</section>";
