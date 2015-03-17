@@ -15,7 +15,11 @@ function foundation_access_preprocess_html(&$variables) {
  * Implements template_preprocess_page.
  */
 function foundation_access_preprocess_page(&$variables) {
-  $variables['cis_lmsless'] = _cis_lmsless_theme_vars();
+  // make sure we have lmsless enabled so we don't WSOD
+  $variables['cis_lmsless'] = array('active' => array('title' => ''));
+  if (module_exists('cis_lmsless')) {
+    $variables['cis_lmsless'] = _cis_lmsless_theme_vars();
+  }
 }
 
 /**
