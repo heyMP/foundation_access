@@ -48,8 +48,9 @@
                 <span class=""><?php print $service['title']; ?></span>
               </a>
               <?php endforeach ?>
+              <!--
               <hr></hr>
-              <h2>BASELINE</h2>
+              <h2>Future</h2>
               <a href="#" class="etb-modal-icon calendar-icon row">
                 <div class="icon-calendar-black etb-modal-icons"></div>
                 <span class="">Calendar</span>
@@ -90,6 +91,7 @@
                 <div class="icon-collab-black etb-modal-icons"></div>
                 <span>Peer Collaboration</span>
               </a>
+            -->
             <a class="close-reveal-modal">&#215;</a>
          </div>
          <div id="user-nav-modal" class="reveal-modal etb-nav-modal" data-reveal>
