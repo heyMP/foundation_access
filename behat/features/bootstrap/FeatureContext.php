@@ -9,145 +9,43 @@ use Behat\Behat\Tester\Exception\PendingException;
 class FeatureContext extends DrupalContext implements SnippetAcceptingContext {
 
   /**
-   * @When /^I login with user "([^"]*)"$/
-   */
-  public function iLoginWithUser($name) {
-    // @todo: Move password to YAML.
-    $password = '1234';
-    $this->loginUser($name, $password);
-  }
-
-  /**
-   * Login a user to the site.
+   * @Then I visit content :title
    *
-   * @param $name
-   *   The user name.
-   * @param $password
-   *   The use password.
-   * @param bool $check_success
-   *   Determines if we should check for the login to be successful.
-   *
-   * @throws \Exception
+   * Query the node by title and redirect.
    */
-  protected function loginUser($name, $password, $check_success = TRUE) {
-    $this->getSession()->visit($this->locatePath('/#/logout'));
-    // Reload to force refresh button of the browser. (ui-router reload the state.)
-    $this->getSession()->reload();
-    $this->iWaitForCssElement('#login-form', 'appear');
-    $element = $this->getSession()->getPage();
-    $element->fillField('username', $name);
-    $element->fillField('password', $password);
-    $submit = $element->findButton('Log in');
+  public function iVisitContent($title) {
+    $query = new entityFieldQuery();
+    $result = $query
+    ->entityCondition('entity_type', 'node')
+    ->propertyCondition('title', $title)
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->range(0, 1)
+    ->execute();
 
-    if (empty($submit)) {
-      throw new \Exception(sprintf("No submit button at %s", $this->getSession()->getCurrentUrl()));
+    if (empty($result['node'])) {
+      $params = array('@title' => $title);
+      throw new Exception(format_string("Node @title not found.", $params));
     }
 
-    // Log in.
-    $submit->click();
-
-    if ($check_success) {
-      // Wait for the dashboard's menu to load, with the user accout information.
-      $this->iWaitForCssElement('.menu-account', 'appear');
-    }
+    $nid = key($result['node']);
+    $this->getSession()->visit($this->locatePath('node/' . $nid));
   }
 
   /**
-   * @When /^I login with bad credentials$/
+   * @Then I wait for text :text to :appear
    */
-  public function iLoginWithBadCredentials() {
-    return $this->loginUser('wrong-foo', 'wrong-bar', FALSE);
-  }
-
-  /**
-   * @Then /^I should wait for the text "([^"]*)" to "([^"]*)"$/
-   */
-  public function iShouldWaitForTheTextTo($text, $appear) {
+  public function iWaitForText($text, $appear) {
     $this->waitForXpathNode(".//*[contains(normalize-space(string(text())), \"$text\")]", $appear == 'appear');
   }
 
   /**
-   * @Then /^I wait for css element "([^"]*)" to "([^"]*)"$/
+   * @Then I wait for css element :element to :appear
    */
   public function iWaitForCssElement($element, $appear) {
     $xpath = $this->getSession()->getSelectorsHandler()->selectorToXpath('css', $element);
     $this->waitForXpathNode($xpath, $appear == 'appear');
   }
 
-  /**
-   * @Then I should see the login page
-   */
-  public function iShouldSeeTheLoginPage() {
-    $this->iWaitForCssElement('#login-form', 'appear');
-  }
-
-  /**
-   * @Then I should see the category active
-   */
-  public function iShouldSeeTheCategoryActive() {
-    $this->iWaitForCssElement('.active-category', 'appear');
-  }
-
-  /**
-   * @Then I should see :markers markers
-   */
-  public function iShouldSeeMarkers($markers, $equals = TRUE) {
-    $this->waitFor(function($context) use ($markers, $equals) {
-      try {
-        $nodes = $context->getSession()->evaluateScript('angular.element(".leaflet-marker-icon").length');
-        if ($nodes == (int)$markers) {
-          return $equals;
-        }
-        return !$equals;
-      }
-      catch (WebDriver\Exception $e) {
-        if ($e->getCode() == WebDriver\Exception::NO_SUCH_ELEMENT) {
-          return !$equals;
-        }
-        throw $e;
-      }
-    });
-  }
-
-  /**
-   * @Then I should see a marker selected
-   */
-  public function iShouldSeeAMarkerSelected($appear = TRUE) {
-    $selected_src_image = '../images/marker-red.png';
-    // check if exist and is selected.
-    $this->waitFor(function($context) use ($selected_src_image, $appear) {
-      try {
-        // Get an array of string <img src="...">, filled with the value of the src attribute of the marker icon image.
-        $marker_attr_src = $context->getSession()->evaluateScript('angular.element(".leaflet-marker-icon").map(function(index, element){ return angular.element(element).attr("src") });');
-        if (in_array($selected_src_image, $marker_attr_src)) {
-          return $appear;
-        }
-        return !$appear;
-      }
-      catch (WebDriver\Exception $e) {
-        if ($e->getCode() == WebDriver\Exception::NO_SUCH_ELEMENT) {
-          return !$appear;
-        }
-        throw $e;
-      }
-    });
-  }
-
-  /**
-   * @Then I should have :frequency as chart usage label
-   */
-  public function iShouldHaveAsChartUsageLabel($frequency) {
-    $csspath = '#chart-usage > div:nth-child(1) > div > svg > g:nth-child(5) > g:nth-child(1) > text';
-    $this->waitForTextNgElement($csspath, $frequency);
-  }
-
-  /**
-   * @Then I should not see the filters
-   */
-  public function iShouldNotSeeTheFilters() {
-    $csspath = "input.hide-meters-category";
-    $this->iWaitForCssElement($csspath, FALSE);
-  }
 
   /**
    * @AfterStep
@@ -180,26 +78,17 @@ class FeatureContext extends DrupalContext implements SnippetAcceptingContext {
       // Module is disabled.
       return;
     }
+
     if (!$entities = entity_load('restful_token_auth')) {
       // No tokens found.
       return;
     }
-    // Delete from database.
+
     foreach ($entities as $entity) {
       $entity->delete();
     }
   }
 
-  /**
-   * @BeforeScenario
-   *
-   * Resize the view port.
-   */
-  public function resizeWindow() {
-    if ($this->getSession()->getDriver() instanceof \Behat\Mink\Driver\Selenium2Driver) {
-      $this->getSession()->resizeWindow(1440, 900, 'current');
-    }
-  }
 
   /**
    * Helper function; Execute a function until it return TRUE or timeouts.
@@ -207,11 +96,11 @@ class FeatureContext extends DrupalContext implements SnippetAcceptingContext {
    * @param $fn
    *   A callable to invoke.
    * @param int $timeout
-   *   The timeout period. Defaults to 30 seconds.
+   *   The timeout period. Defaults to 10 seconds.
    *
    * @throws Exception
    */
-  private function waitFor($fn, $timeout = 30000) {
+  private function waitFor($fn, $timeout = 10000) {
     $start = microtime(true);
     $end = $start + $timeout / 1000.0;
     while (microtime(true) < $end) {
@@ -233,6 +122,7 @@ class FeatureContext extends DrupalContext implements SnippetAcceptingContext {
    * @throws Exception
    */
   private function waitForXpathNode($xpath, $appear = TRUE) {
+
     $this->waitFor(function($context) use ($xpath, $appear) {
       try {
         $nodes = $context->getSession()->getDriver()->find($xpath);
@@ -250,34 +140,4 @@ class FeatureContext extends DrupalContext implements SnippetAcceptingContext {
       }
     });
   }
-
-  /**
-   * Wait for appear or disappear text of an element, the search is done with CSSPath.
-   *
-   * @param string $csspath
-   *   The CSSPath string.
-   * @param bool $appear
-   *   Determine if element should appear. Defaults to TRUE.
-   *
-   * @throws Exception
-   */
-  private function waitForTextNgElement($csspath, $text, $appear = TRUE) {
-    $this->waitFor(function($context) use ($csspath, $text, $appear) {
-      try {
-        $element_text = $context->getSession()->evaluateScript('angular.element("' + $csspath + '").text();');
-        if ($element_text == $text) {
-          return $appear;
-        }
-        return !$appear;
-      }
-      catch (WebDriver\Exception $e) {
-        if ($e->getCode() == WebDriver\Exception::NO_SUCH_ELEMENT) {
-          return !$appear;
-        }
-        throw $e;
-      }
-    });
-  }
-
-
 }
